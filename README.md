@@ -1,4 +1,4 @@
-# **Case Study: Cyclistic-Bike-Share-Analysis**
+## **Case Study: Cyclistic-Bike-Share-Analysis**
 
 ### **Scenario**
 You are a junior data analyst working in the marketing analyst team at Cyclistic, a bike-share company in Chicago. The director of marketing believes the company’s future success depends on maximizing the number of annual memberships. Therefore, your team wants to understand how casual riders and annual members use Cyclistic bikes differently. From these insights, your team will design a new marketing strategy to convert casual riders into annual members. But first, Cyclistic executives must approve your recommendations, so they must be backed up with compelling data insights and professional data visualizations.
@@ -8,7 +8,7 @@ In 2016, Cyclistic launched a successful bike-share offering. Since then, the pr
 
 The project follows the six step data analysis process: **ask, prepare, process, analyze, share, and act**.
 
-### **PHASE 1: Ask** 
+### **Ask an Effective Question** 
 Three questions will guide the future marketing program:
  1. How do annual members and casual riders use Cyclistic bikes differently? 
  2. why would casual riders buy Cyclistic annual memberships?
@@ -27,11 +27,11 @@ This comparison along with other tasks will later be used by marketing departmen
 Primary stakeholders: The director of marketing and Cyclistic executive team
 Secondary stakeholders: Cyclistic marketing analytics team
 
-### **PHASE 2: Data Preparation**
+### **Data Preparation**
 
 The data that we will be using is Cyclistic’s historical trip data from last 12 months (Year 2021). The data has been made available by Motivate International Inc. on this [link](https://divvy-tripdata.s3.amazonaws.com/index.html) under this [license](https://www.divvybikes.com/data-license-agreement).
 
-The dataset consists of 12 CSV files (each for a month) with 13 columns and more than 4 million rows.
+The dataset consists of 12 CSV files (each for a month) with 13 columns and more than 5 million rows.
 
 ROCCC approach is used to determine the credibility of the data
 
@@ -47,12 +47,12 @@ A quick filtering and checking data for completeness shows that “start station
 
 This limitation could slightly affect our analysis for finding stations where most electric-bikes are taken but we can use “end station names” to locate our customers and this can be used for further analysis and potential marketing campaigns.
 
-### **PHASE 3: Data Process**
+### **Data Process**
 
 Before we start analyzing, it is necessary to make sure data is clean, free of error and in the right format.
 ### **Tasks:**
 
- **1. Tools:** R Programming is used for its ability to handle huge datasets efficiently. Microsoft Excel is used for further analysis and visualization. 
+ **1. Tools:** Python Programming is used for its ability to handle huge datasets efficiently.
 
  **importing the python libraries**
   import numpy as np
@@ -60,7 +60,7 @@ Before we start analyzing, it is necessary to make sure data is clean, free of e
 
 **2. Organize**: Combined all 12 datasets into one.
 
-	# Reading the csv dataset 
+Reading the csv dataset :
 * jan_2021 = pd.read_csv(r".\Divvy_Trips_2021\Divvy_Trips_2021_Q1_01.csv")
 * feb_2021 = pd.read_csv(r".\Divvy_Trips_2021\Divvy_Trips_2021_Q1_02.csv")
 * mar_2021 = pd.read_csv(r".\Divvy_Trips_2021\Divvy_Trips_2021_Q1_03.csv")
@@ -75,17 +75,17 @@ Before we start analyzing, it is necessary to make sure data is clean, free of e
 * dec_2021 = pd.read_csv(r".\Divvy_Trips_2021\Divvy_Trips_2021_Q4_12.csv")
 
 
-#Concatenating Dataframes into single Dataframe
+Concatenating Dataframes into single Dataframe :
 dataset = [jan_2021, feb_2021, mar_2021, apr_2021, may_2021, jun_2021,jul_2021, aug_2021, sep_2021, oct_2021, nov_2021, dec_2021]
 dataset = pd.concat(dataset)
 
 **3. Sampling**: Due to limitation in computational power and efficiency purposes, I had to take a random sample without replacement out of 4,073,561 observations. Sample size is calculated as follow:
- - Population size: 4,073,561
+ - Population size: 5,595,063
  - Confidence level: 99.99%
- - Margin of Error: 0.2
- - Sample size: 767,554
+ - Margin of Error: 0.01
+ - Sample size: 37,577
 
-       df.sample(n=767,554,replace=False)
+       df.sample(n=37577,replace=False)
 
 
 **4. Preparing for analysis**
@@ -99,20 +99,20 @@ dataset = pd.concat(dataset)
 	- Day of the week
  - These columns provide additional opportunities to aggregate the data.
 
-**5. Check data for errors**: A quick sorting and filtering shows that in 1931 rows, there is a negative difference between two time periods (started_at and ended_at) which logically isn’t possible.
+**5. Check data for errors**: A quick sorting and filtering shows that, there is a negative difference between two time periods (started_at and ended_at) which logically isn’t possible.
 	Removed the rows where trip duration is negative.
 
 **6. Clean column names and checked for duplicate records in rows.**
 
-## PHASE 4: Analyzing Data
+## **Data Analyze**
 Performed data aggregation using Python Programming.
 
-Further analysis were carried out to perform calculations, identify trends and relationships using PivotTable and Charts on Microsoft Excel.
+Further analysis were carried out to perform calculations, identify trends and relationships using PivotTable and grouping data.
 
-## PHASE 5: Share
-Microsoft PowerPointatplotlib is used for data visualization and presenting key insights.
+## **Share Insights**
+Matplotlib is used for data visualization and presenting key insights.
 
-## PHASE 6: Act
+## **Act on Recommendation**
 After analizing, we reached to the following conclusion:
 
 - Casual riders take less number of rides but for longer durations.
